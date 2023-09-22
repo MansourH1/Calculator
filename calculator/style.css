@@ -58,6 +58,7 @@ body{
 button{
     background-color: #1E2326;
     color: white;
+    font-size:20px;
 }
 
 .btn-alignement button:nth-child(4) {
