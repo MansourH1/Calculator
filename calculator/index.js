@@ -41,86 +41,23 @@ function Calculate(button) {
     if (value == "del") {
         let eq = equation.textContent;
         equation.textContent = eq.substring(0, eq.length - 1);
+        if(!button.disabled){
+        button.setAttribute("disabled", "");
+        button = document.getElementById("divide");
+        button.setAttribute("disabled", "");
+        button = document.getElementById("power");
+        button.setAttribute("disabled", "");
+        button = document.getElementById("minus");
+        button.setAttribute("disabled", "");
+        button = document.getElementById("res");
+        button.setAttribute("disabled", "");
     }
-
+    }
     if (value == "AC") {
         equation.innerHTML = "";
     }
 
 }
-
-// function Result(){
-//     let equation = document.getElementById("Equation").textContent;
-//     let res=0;
-//     equation=equation.trim();
-//     let power=equation.split('+').join(',').split('÷').join(',').split('-').join(',').split(',');
-//     if(power.length>=1){
-//     for(let i=0;i<power.length;i++){
-//         if(power[i].indexOf("x") != -1){ // Corrected line
-//             let split = power[i].split("x");
-//             var numb=1;
-//             for(let j=0;j<split.length;j++){
-//                 console.log("i= "+i+" j= "+j);
-//                 numb *= parseFloat(split[j]);
-//                 console.log(numb);
-//             }
-//             res+=numb;
-//             console.log(`Result: ${res}`)
-//         }
-//     }
-// }
-// power=equation.split('+').join(',').split('x').join(',').split('-').join(',').split(',');
-//     if(power.length>=1){
-//     for(let i=0;i<power.length;i++){
-//         if(power[i].indexOf("÷") != -1){ // Corrected line
-//             let split = power[i].split("÷");
-//             var numb=parseFloat(split[0]);
-//             for(let j=1;j<split.length;j++){
-//                 console.log("i= "+i+" j= "+j);
-//                 numb =parseFloat(numb / parseFloat(split[j]));
-//                 console.log(numb);
-//             }
-//             res+=numb;
-//             console.log(`Result: ${res}`)
-//         }
-//     }
-// }
-
-
-
-// for(let i=0;i<power.length;i++){
-// console.log(power[i] + " i= "+i);
-// }
-// console.log(numb);
-//     let ResSpan=document.getElementById("Result");
-//     ResSpan.innerHTML=`${res}`;
-// }
-
-// function Result() {
-//     let equation = document.getElementById("Equation").textContent;
-//     let res = 0;
-//     equation = equation.trim();
-//     let parts = equation.split(' ');
-
-//     for (let i = 0; i < parts.length; i++) {
-//         if (parts[i].includes('x') || parts[i].includes('÷')) {
-//             let nums = parts[i].split(/(x|÷)/);
-//             let val = parseFloat(nums[0]);
-//             for (let j = 1; j < nums.length; j += 2) {
-//                 if (nums[j] === 'x') {
-//                     val *= parseFloat(nums[j + 1]);
-//                 } else if (nums[j] === '÷') {
-//                     val /= parseFloat(nums[j + 1]);
-//                 }
-//             }
-//             res += val;
-//         } else if (!isNaN(parts[i])) {
-//             res += parseFloat(parts[i]);
-//         }
-//     }
-
-//     document.getElementById("Result").innerHTML = `${res}`;
-// }
 
 function Result() {
     let equation = document.getElementById("Equation").textContent;
