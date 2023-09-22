@@ -1,6 +1,6 @@
 *{
     box-sizing: border-box;
-    height:95%;
+    height: 95%;
 }
 
 body{
@@ -12,9 +12,9 @@ body{
 
 .BorderCalc {
     border: 1px solid white;
-    width:100%;
+    width: 100%;
     max-width: 325px;
-    height:100%;
+    height: 100%;
     border-radius: 1em;
     display: flex; /* Add Flexbox here */
     flex-direction: column; /* Stack child elements vertically */
@@ -58,7 +58,7 @@ body{
 button{
     background-color: #1E2326;
     color: white;
-    font-size:20px;
+    font-size: 20px;
 }
 
 .btn-alignement button:nth-child(4) {
