@@ -12,8 +12,8 @@ body{
 
 .BorderCalc {
     border: 1px solid white;
-    min-width:200px;
-    max-width: 100%;
+    width:100%;
+    max-width: 600px;
     height:90%;
     border-radius: 1em;
     display: flex; /* Add Flexbox here */
