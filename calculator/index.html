@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="BorderCalc">
+        <div class="Eq-div">
+            <span class="Eq-span" >Equation : <span id="Equation"></span></span>
+            <span class="Res-span">Result : <span id="Result"></span></span>
+        </div>
+        <div class="btn-alignement">
+<button align="center" onclick="Calculate(this)">AC</button>
+<button align="center" onclick="Calculate(this)"></button>
+<button align="center" onclick="Calculate(this)">%</button>
+<button align="center" id="divide" onclick="Calculate(this)" disabled>&divide;</button>
+
+<button align="center" onclick="Calculate(this)">7</button>
+<button align="center" onclick="Calculate(this)">8</button>
+<button align="center" onclick="Calculate(this)">9</button>
+<button align="center" id="power" onclick="Calculate(this)" disabled>x</button>
+
+<button align="center" onclick="Calculate(this)">4</button>
+<button align="center" onclick="Calculate(this)">5</button>
+<button align="center" onclick="Calculate(this)">6</button>
+<button align="center" id="minus" onclick="Calculate(this)" disabled>-</button>
+
+<button align="center" onclick="Calculate(this)">1</button>
+<button align="center" onclick="Calculate(this)">2</button>
+<button align="center" onclick="Calculate(this)">3</button>
+<button align="center" id="plus" onclick="Calculate(this)" disabled>+</button>
+
+<button align="center" onclick="Calculate(this)">0</button>
+<button align="center" onclick="Calculate(this)">.</button>
+<button align="center" onclick="Calculate(this)">del</button>
+<button align="center" id="res" onclick="Result()">=</button>
+
+        </div>
+    </div>
+</body>
+</html>

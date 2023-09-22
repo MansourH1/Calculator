@@ -1,0 +1,86 @@
+*{
+    box-sizing: border-box;
+    height: 95%;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: black;
+}
+
+.BorderCalc {
+    border: 1px solid white;
+    width: 25%;
+    height: 80%;
+    border-radius: 1em;
+    display: flex; /* Add Flexbox here */
+    flex-direction: column; /* Stack child elements vertically */
+    justify-content: center; /* Vertically center child elements */
+}
+
+.Eq-div{
+    position :relative;
+    border-radius: 1em 1em 0 0;
+    height: 26%;
+    border: 1px solid white;
+    background-color: white;
+}
+
+.Eq-div .Eq-span {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    height: auto;
+    word-break: break-all;
+    font-size: 20px;
+}
+
+.Eq-div .Res-span {
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    height: auto;
+    word-break: break-all;
+    font-size: 20px;
+}
+
+.btn-alignement{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    background-color:#363B3E ;
+    border-radius: 0 0 1em 1em;
+}
+
+button{
+    background-color: #1E2326;
+    color: white;
+}
+
+.btn-alignement button:nth-child(4) {
+    background-color: #5E4BB6;
+}
+
+.btn-alignement button:nth-child(8) {
+    background-color: #5E4BB6;
+}
+
+.btn-alignement button:nth-child(12) {
+    background-color: #5E4BB6;
+}
+
+.btn-alignement button:nth-child(16) {
+    background-color: #5E4BB6;
+}
+
+.btn-alignement button:nth-child(17) {
+    border-radius: 0 0 0 1em;
+    background-color: #1E2326;
+}
+
+.btn-alignement button:last-child{
+    border-radius: 0 0 1em 0;
+    background-color: #FEC208;
+}
