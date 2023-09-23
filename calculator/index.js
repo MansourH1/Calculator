@@ -66,40 +66,65 @@ function Result() {
     }
     equation = equation.trim();
     let res=0;
-    let splitted = equation.split(/(\*|÷|\+|\-)/);
+    let splitted = equation.split(/(\+|\-)/);
+    let ArrayOfMultiDivi =[];
     for(let i=0;i<splitted.length;i++){
-        if(splitted[1]=="*"){
-            res=0;
-            res+=parseFloat(splitted[0]*splitted[2]);
-            splitted = splitted.slice(3);
-            splitted.unshift(res);
-            i=0;
-            for(let j=0;j<splitted.length;j++){
-                console.log(splitted[j]);
-            }
-        }else if(splitted[1]=="÷"){
-             res=0;
-             res+=parseFloat(splitted[0]/splitted[2]);
-             splitted = splitted.slice(3);
-            splitted.unshift(res);
-            i=0;
-        }else if(splitted[1]=="+"){
-            res=0;
-            res+=parseFloat(splitted[0])+parseFloat(splitted[2]);
-            splitted = splitted.slice(3);
-           splitted.unshift(res);
-           i=0;
-        }else if(splitted[1]=="-"){
-            res=0;
-            res+=parseFloat(splitted[0]-splitted[2]);
-            splitted = splitted.slice(3);
-           splitted.unshift(res);
-           i=0;
-        }
-        if(splitted.length==1){
-            res=splitted[0];
-        }
-        console.log(i);
+        
+        if(splitted[i].match(/[\*|÷]/)){
+            ArrayOfMultiDivi.push(splitted[i]);
+}
     }
-    document.getElementById("Result").innerHTML = `${res}`;
+if (ArrayOfMultiDivi.length>0){
+    var StringOfMultiDivi =ArrayOfMultiDivi.join("");
+    }
+    let SplittedMultiDivi = StringOfMultiDivi.split(/(\*|\÷)/)
+    for(let i=0;i<SplittedMultiDivi.length;i++){
+                if(SplittedMultiDivi[1]=="*"){
+                    res=0;
+                    res+=parseFloat(SplittedMultiDivi[0]*SplittedMultiDivi[2]);
+                    SplittedMultiDivi = SplittedMultiDivi.slice(3);
+                    SplittedMultiDivi.unshift(res);
+                    i=0;
+                    for(let j=0;j<SplittedMultiDivi.length;j++){
+                        console.log(SplittedMultiDivi[j]);
+                    }
+                }else if(SplittedMultiDivi[1]=="÷"){
+                     res=0;
+                     res+=parseFloat(SplittedMultiDivi[0]/SplittedMultiDivi[2]);
+                     SplittedMultiDivi = SplittedMultiDivi.slice(3);
+                     SplittedMultiDivi.unshift(res);
+                    i=0;
+                }
+                if(SplittedMultiDivi.length==1){
+                    res=SplittedMultiDivi[0];
+                }
+            }
+            for(let j =0;j<splitted.length;j++){
+                if(splitted[j].match(/[\*|÷]/)){
+                    splitted.splice(j,1);
+                }
+            }
+            splitted.push(res);
+            for(let i=0;i<splitted.length;i++){
+                if(splitted[1]=="+"){
+                    res=0;
+                    res+=parseFloat(splitted[0])+parseFloat(splitted[2]);
+                    splitted = splitted.slice(3);
+                    splitted.unshift(res);
+                    i=0;
+                    for(let j=0;j<splitted.length;j++){
+                        console.log(splitted[j]);
+                    }
+                }else if(splitted[1]=="-"){
+                     res=0;
+                     res+=parseFloat(splitted[0])-parseFloat(splitted[2]);
+                     splitted = splitted.slice(3);
+                     splitted.unshift(res);
+                    i=0;
+                }
+                if(splitted.length==1){
+                    res=splitted[0];
+                }
+            }
+  document.getElementById("Result").innerHTML = `${res}`;
 }
