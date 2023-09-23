@@ -41,17 +41,6 @@ function Calculate(button) {
     if (value == "del") {
         let eq = equation.textContent;
         equation.textContent = eq.substring(0, eq.length - 1);
-        if(!button.disabled){
-        button.setAttribute("disabled", "");
-        button = document.getElementById("divide");
-        button.setAttribute("disabled", "");
-        button = document.getElementById("power");
-        button.setAttribute("disabled", "");
-        button = document.getElementById("minus");
-        button.setAttribute("disabled", "");
-        button = document.getElementById("res");
-        button.setAttribute("disabled", "");
-    }
     }
     if (value == "AC") {
         equation.innerHTML = "";
