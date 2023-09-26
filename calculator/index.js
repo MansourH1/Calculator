@@ -1,12 +1,11 @@
 function Calculate(button) {
     let value = button.textContent; // Get the text content of the button
     let equation = document.getElementById("Equation");
-    if (value == "%" || value == "1" || value == "2" ||
-        value == "3" || value == "4" || value == "5" ||
-        value == "6" || value == "7" || value == "8" ||
-        value == "9" || value == ".") {
+    if (value == "%" || value == "0" || value == "1" || value == "2" ||
+        value == "3" || value == "4" || value == "5" || value == "6" ||
+        value == "7" || value == "8" || value == "9" || value == "." ||
+        value == "(" || value == ")" ) {
         equation.innerHTML += value;
-
         let array = ["plus", "divide", "power", "minus", "res"];
         for (let i = 0; i < array.length; i++) {
             if (document.getElementById(array[i]).disabled) {
@@ -41,17 +40,54 @@ function Calculate(button) {
     if (value == "del") {
         let eq = equation.textContent;
         equation.textContent = eq.substring(0, eq.length - 1);
+        let array = ["plus", "divide", "power", "minus"];
+        for (let i = 0; i < array.length; i++) {
+            if (document.getElementById(array[i]).disabled) {
+            let button = document.getElementById("plus");
+                button.removeAttribute("disabled");
+                button = document.getElementById("divide");
+                button.removeAttribute("disabled");
+                button = document.getElementById("power");
+                button.removeAttribute("disabled");
+                button = document.getElementById("minus");
+                button.removeAttribute("disabled");
+                break;
+            }
+        }
     }
     if (value == "AC") {
         equation.innerHTML = "";
     }
-
 }
 
-function Result() {
+function FirstCatch(){
     let equation = document.getElementById("Equation").textContent;
+    let FirstCatch = equation.split(/(\(|\))/);
+    if(FirstCatch.length>2){
+        for(let i=0; i<FirstCatch.length; i++){
+            if(FirstCatch[i]== "("){
+                var res = Result(FirstCatch[i+1]);
+                FirstCatch = FirstCatch.splice(i);
+                FirstCatch = FirstCatch.splice(i-1);
+                FirstCatch = FirstCatch.splice(i+1);
+                FirstCatch.unshift(res);
+                i=0;
+            }
+        }
+        let eq = FirstCatch.join("");
+        var res = Result(eq);
+    }else{
+        var res = Result(equation);
+    }
+    document.getElementById("Result").innerHTML = `${res}`;
+}
+
+function Result(equation) {
     if(equation.includes("x")) { 
         equation = equation.replace(/x/g, "*");
+    }
+    if(equation.includes("%")) { 
+        equation = equation.replace(/%/g, "÷100");
     }
     equation = equation.trim();
     let res=0;
@@ -98,5 +134,5 @@ for(let k=0;k<WholeEq.length;k++){
         res=WholeEq[0];
          }
 }
-  document.getElementById("Result").innerHTML = `${res}`;
+  return res;
 }
