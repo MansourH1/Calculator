@@ -50,7 +50,7 @@ body{
 .btn-alignement{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     background-color:#363B3E ;
     border-radius: 0 0 1em 1em;
 }
@@ -77,7 +77,7 @@ button{
     background-color: #5E4BB6;
 }
 
-.btn-alignement button:nth-child(17) {
+.btn-alignement button:nth-child(21) {
     border-radius: 0 0 0 1em;
     background-color: #1E2326;
 }
