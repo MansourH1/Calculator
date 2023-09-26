@@ -63,14 +63,12 @@ function Calculate(button) {
 function FirstCatch(){
     let equation = document.getElementById("Equation").textContent;
     let FirstCatch = equation.split(/(\(|\))/);
-    if(FirstCatch.length>2){
+    if(FirstCatch.length>1){
         for(let i=0; i<FirstCatch.length; i++){
-            if(FirstCatch[i]== "("){
+            if(FirstCatch[i] == "("){
                 var res = Result(FirstCatch[i+1]);
-                FirstCatch = FirstCatch.splice(i);
-                FirstCatch = FirstCatch.splice(i-1);
-                FirstCatch = FirstCatch.splice(i+1);
-                FirstCatch.unshift(res);
+                FirstCatch.splice(i, 3, res);
+                FirstCatch[i] = res;
                 i=0;
             }
         }
