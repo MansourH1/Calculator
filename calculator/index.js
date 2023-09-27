@@ -1,10 +1,8 @@
 function Calculate(button) {
     let value = button.textContent; // Get the text content of the button
     let equation = document.getElementById("Equation");
-    if (value == "%" || value == "0" || value == "1" || value == "2" ||
-        value == "3" || value == "4" || value == "5" || value == "6" ||
-        value == "7" || value == "8" || value == "9" || value == "." ||
-        value == "(" || value == ")" ) {
+    let characters ="%0123456789.()";
+    if (characters.includes(value)) {
         equation.innerHTML += value;
         let array = ["plus", "divide", "power", "minus", "res"];
         for (let i = 0; i < array.length; i++) {
@@ -24,7 +22,8 @@ function Calculate(button) {
         }
     }
 
-    if (value == "x" || value == "÷" || value == "-" || value == "+") {
+    let operators="x÷+-";
+    if (operators.includes(value)) {
         equation.innerHTML += value;
         button.setAttribute("disabled", "");
         button = document.getElementById("divide");
@@ -133,4 +132,9 @@ for(let k=0;k<WholeEq.length;k++){
          }
 }
   return res;
+}
+
+function Copy(){
+    let ResultToBeCopied = document.getElementById("Result").textContent;
+    navigator.clipboard.writeText(ResultToBeCopied);
 }
