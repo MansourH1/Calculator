@@ -58,24 +58,22 @@ function Calculate(button) {
         equation.innerHTML = "";
     }
 }
-
-function FirstCatch(){
-    let equation = document.getElementById("Equation").textContent;
-    let FirstCatch = equation.split(/(\(|\))/);
-    if(FirstCatch.length>1){
-        for(let i=0; i<FirstCatch.length; i++){
-            if(FirstCatch[i] == "("){
-                var res = Result(FirstCatch[i+1]);
-                FirstCatch.splice(i, 3, res);
-                FirstCatch[i] = res;
-                i=0;
-            }
-        }
-        let eq = FirstCatch.join("");
-        var res = Result(eq);
+function FirstCatch(equation){
+    equation = equation.trim();
+    if(equation.includes("(")){
+        let start = equation.lastIndexOf("(")
+        let end = equation.indexOf(")" ,start);
+               console.log(`Start: ${start}, End:${end}`);
+               let ToSolve = equation.substring(start+1 , end) ;
+               console.log(`${ToSolve}`);
+               let res = Result(ToSolve);
+               console.log('Result:' + `${res}`);
+               console.log(equation.substring(0 ,start)+res+equation.substring(end+1));
+            return FirstCatch(equation.substring(0 ,start)+res+equation.substring(end+1));
     }else{
         var res = Result(equation);
     }
+sessionStorage.setItem("LastAnswer", `${res}`);
     document.getElementById("Result").innerHTML = `${res}`;
 }
 
@@ -137,4 +135,34 @@ for(let k=0;k<WholeEq.length;k++){
 function Copy(){
     let ResultToBeCopied = document.getElementById("Result").textContent;
     navigator.clipboard.writeText(ResultToBeCopied);
+}
+
+function LastAnswer(){
+    // Check if a session item exists
+if (sessionStorage.getItem("LastAnswer") === null) {
+    console.log("No session found");
+} else {
+    let value = sessionStorage.getItem("LastAnswer");
+    let equation = document.getElementById("Equation");
+    equation.innerHTML += value;
+    let array = ["plus", "divide", "power", "minus", "res"];
+        for (let i = 0; i < array.length; i++) {
+            if (document.getElementById(array[i]).disabled) {
+                let button = document.getElementById("plus");
+                button.removeAttribute("disabled");
+                button = document.getElementById("divide");
+                button.removeAttribute("disabled");
+                button = document.getElementById("power");
+                button.removeAttribute("disabled");
+                button = document.getElementById("minus");
+                button.removeAttribute("disabled");
+                button = document.getElementById("res");
+                button.removeAttribute("disabled");
+                break;
+            }
+        }
+    console.log("Session found");
+}
+
+
 }
