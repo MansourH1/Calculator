@@ -36,6 +36,7 @@ body{
     height: auto;
     word-break: break-all;
     font-size: 20px;
+    user-select: none;
 }
 
 .Eq-div .Res-span {
@@ -45,6 +46,7 @@ body{
     height: auto;
     word-break: break-all;
     font-size: 20px;
+    user-select: none;
 }
 
 .btn-alignement{
