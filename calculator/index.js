@@ -1,7 +1,7 @@
 function Calculate(button) {
     let value = button.textContent; // Get the text content of the button
     let equation = document.getElementById("Equation");
-    let characters ="%0123456789.()";
+    let characters ="%0123456789.()^";
     if (characters.includes(value)) {
         equation.innerHTML += value;
         let array = ["plus", "divide", "power", "minus", "res"];
@@ -58,6 +58,59 @@ function Calculate(button) {
         equation.innerHTML = "";
     }
 }
+
+
+
+function power(equation){
+equation = equation.trim();
+if(equation.includes("^")){
+    let spot = equation.indexOf("^");
+    let ClosingBrackets = 0;
+    for(var i =spot;i<equation.length;i--){
+if(equation.charAt(i)==")"){
+    ClosingBrackets++;
+}
+if(equation.charAt(i)=="("){
+    ClosingBrackets--;
+if(ClosingBrackets==0){
+    console.log(i);
+    break;
+}
+}
+    }
+    let powered = equation.substring(i,spot);
+    // console.log(powered);
+    let pow ="";
+    for(let k=spot+1;k<equation.length;k++){
+        if(equation.charAt(k)!="%" && equation.charAt(k)!="x" && equation.charAt(k)!="÷" &&
+        equation.charAt(k)!="+" && equation.charAt(k)!="-" && equation.charAt(k)!="."&&
+        equation.charAt(k)!="(" && equation.charAt(k)!=")" ){
+           pow+=equation.charAt(k); 
+        }else{
+            break;
+        }
+
+    }
+    console.log(pow);
+    let neweq="";
+    for(let j =0;j<parseInt(pow);j++){
+        if(j==parseInt(pow)-1){
+            neweq+= powered;
+            break;
+        }
+neweq+= powered + "x";
+    }
+    console.log(neweq);
+     equation = equation.substring(0,i)+"("+neweq+")"+equation.substring(spot+pow.length+1);
+    return power(equation)
+}else{
+    FirstCatch(equation);
+}
+}
+
+
+
+
 function FirstCatch(equation){
     equation = equation.trim();
     if(equation.includes("(")){
